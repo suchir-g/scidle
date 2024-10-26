@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scidle - A simple science word game</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <button id="modal-open">How to play</button>
+    <div class="modal-container" id="modal-container">
+        <div class="modal">
+            <h1>SCIDLE</h1>
+            <img src="images/scidle.png" alt="A picture of the game">
+            <p>
+                If you don't know how to play the original <a
+                    href="https://www.nytimes.com/games/wordle/index.html">WORDLE</a>, check that out before playing
+                this game.
+            </p>
+            <br>
+            <p>A <span class="green-text">green</span> tile means that the tile is in the word and in the right
+                position.</p>
+            <p>An example of this would be <span class="green-text">He</span> as it is in the word, and in the right
+                place.</p>
+            <br>
+            <p>A <span class="yellow-text">yellow</span> tile means that the tile is in the word but not in the right
+                place.</p>
+            <p>An example of this would be <span class="yellow-text">Er</span> as it is in the word, but in the last
+                position instead of the 2nd.</p>
+            <br>
+            <p>A <span class="blue-text">blue</span> tile means that the tile is not in the word, but a similar tile is.
+            </p>
+            <p>An example of this would be <span class="blue-text">Pa</span>, as it isn't in the word but <span
+                    class="green-text">Pt</span> is, and
+                they are very close</p>
+            <br>
+            <p>A grey tile means that the tile is not in the word at all, and nothing similar is in the tile as well.
+            </p>
+            <p>For example <span class="grey-text">Ti</span> isn't in the word, and nothing similar is in the word. This
+                means that for example <span class="grey-text">Ta</span> wouldn't be in the word
+                as it is similar to <span class="grey-text">Ti</span>.
+            </p>
+        </div>
+
+    </div>
+    <h1 id="title">SCIDLE</h1>
+    <hr><br>
+    <div id="boards">
+        <div id="left-board" class="board"></div>
+        <div id="board"></div>
+        <div id="right-board" class="board"></div>
+    </div>
+    <br>
+    <h1 id="answer"></h1>
+    <div class="keyboard-container">
+        <div class="keyboard">
+            <div id="keyboard-0" class="key-row"></div>
+            <div id="keyboard-1" class="key-row"></div>
+            <div id="keyboard-2" class="key-row"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+
+</body>
+
+</html>

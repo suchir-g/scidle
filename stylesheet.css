@@ -1,0 +1,379 @@
+:root {
+    --bg-color: rgb(14, 14, 14);
+    --fg-color: white;
+    --tile-border-color: rgb(58, 58, 58);
+    --highlight-color: rgb(179, 202, 184);
+    --normal-tile-hover: rgb(66, 66, 66);
+    --correct-tile-color: rgb(86, 209, 86);
+    --correct-tile-hover: rgb(80, 151, 80);
+    --incorrect-tile-color: rgb(216, 180, 61);
+    --incorrect-tile-hover: rgb(157, 136, 63);
+    --absent-tile-color: rgb(75, 75, 75);
+    --absent-tile-hover: rgb(128, 128, 128);
+    --close-tile-color: rgb(43, 179, 221);
+    --incorrect-elem-color: rgb(219, 40, 40);
+    --et-item-color: rgb(80, 80, 80);
+}
+
+body {
+    font-family: "Alata", sans-serif;
+    text-align: center;
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: absolute;
+    height: 100svh;
+    
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* RANDOM STUFF */
+
+#answer {
+    margin-top: 16em;
+}
+
+hr {
+    width: 300px;
+    margin-bottom: 3em;
+}
+
+
+
+#title {
+    font-size: 28pt;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 0.2em;
+}
+
+#board {
+    width: 350px;
+    height: 420px;
+    margin: 0 auto;
+    margin-top: 3px;
+    display: flex;
+    flex-wrap: none;
+    justify-content: center;
+    justify-self: center;
+}
+
+.bro-text {
+    font-family: "Times New Roman";
+}
+
+/* TILES AND RELATED ITEMS */
+
+.tile {
+    border: 2px var(--tile-border-color) solid;
+    width: 60px;
+    height: 60px;
+    margin: 2.5px;
+    margin-bottom: 5px;
+
+    color: var(--fg-color);
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+    border-radius: .05em;
+    flex-wrap: none;
+}
+
+.highlighted {
+    border: 2px var(--highlight-color) solid;
+}
+
+.correct {
+    background-color: var(--correct-tile-color);
+    border-color: var(--correct-tile-color);
+}
+
+.incorrect {
+    background-color: var(--incorrect-tile-color);
+    border-color: var(--incorrect-tile-color);
+}
+
+.absent {
+    background-color: var(--absent-tile-color);
+    border-color: var(--absent-tile-color);
+}
+
+.near-match {
+    background-color: var(--close-tile-color);
+    border-color: var(--close-tile-color);
+}
+
+/* ANIMATIONS */
+
+.incorrectElem {
+    animation: blinker 0.3s linear;
+}
+
+@keyframes blinker {
+    50% {
+        color: var(--incorrect-elem-color);
+    }
+}
+
+/* ELEMENT TABLE STYLES */
+
+.et-item {
+    font-size: 20px;
+    width: fit-content;
+    background-color: var(--et-item-color);
+    border-radius: 5px;
+    margin: 2.5px;
+    transition: all 200ms ease-in-out;
+    padding: 0.5em 0.6em;
+    height: min-content;
+}
+
+.et-item:hover {
+    background-color: var(--normal-tile-hover);
+}
+
+.correct-et-item {
+    background-color: var(--correct-tile-color);
+}
+
+.correct-et-item:hover {
+    background-color: var(--correct-tile-hover);
+}
+
+.incorrect-et-item {
+    background-color: var(--incorrect-tile-color);
+}
+
+.incorrect-et-item:hover {
+    background-color: var(--incorrect-tile-hover);
+}
+
+.absent-et-item {
+    background-color: rgb(25, 25, 25);
+    color: rgb(128, 128, 128);
+}
+
+.absent-et-item:hover {
+    background-color: rgb(25, 25, 25);
+}
+
+
+/* ELEMENT BOARD(S) */
+
+#boards {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    width: 100%;
+    height: 50%;
+    justify-self: center;
+}
+
+
+
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 33%;
+    margin-top: 2.8em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+
+/* MODAL CONTAINER (HOW TO PLAY) */
+
+.modal-container {
+    position: absolute;
+    top: 150px;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+}
+
+.modal {
+    background-color: rgb(26, 26, 26);
+    padding: 30px;
+    border-radius: 5px;
+    width: 700px;
+    max-width: 100%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 1);
+    transition: all 0.1s;
+    z-index: 3;
+
+}
+
+.show {
+    opacity: 1;
+}
+
+
+
+
+
+#modal-open {
+    margin-top: 10px;
+    background-color: var(--background-color);
+    color: var(--fg-color);
+    font-family: inherit;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: all 0.2s;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+p {
+    color: rgb(189, 189, 189);
+}
+
+a {
+    text-decoration: bold;
+    color: white;
+
+}
+
+
+#modal-open:hover {
+    text-shadow: 1px 1px 5px rgba(179, 179, 179, 0.6);
+}
+
+/* IMAGES IN THE MODAL */
+
+.modal img {
+    width: 20em;
+    height: 16em;
+}
+
+/* TEXT STYLES IN THE MODAL PARAGRAPH */
+
+.green-text {
+    color: var(--correct-tile-color);
+}
+
+.yellow-text {
+    color: var(--incorrect-tile-color);
+}
+
+.blue-text {
+    color: var(--close-tile-color);
+}
+
+.grey-text {
+    color: rgb(214, 214, 214);
+}
+
+.modal span:hover {
+    text-shadow: 5px 5px 10px white;
+}
+
+/* MOBILE FRIENDLY */
+
+.keyboard-container {
+    width: 100vw;
+}
+
+.keyboard {
+    width: 100vw;
+    margin-top: 20px;
+}
+
+.keyboard span {
+    opacity: 1;
+    color: var(--fg-color);
+    padding: 0.4em 0.6em;
+    margin: 5px;
+    border: rgb(155, 155, 155) 2px solid;
+    border-radius: 2.5px;
+    flex-basis: 30px, 40px;
+    flex-shrink: 1.5;
+}
+
+.key-row {
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-self: left;
+}
+
+@media only screen and (max-width: 830px) {
+    .board {
+        display: none;
+    }
+
+    #modal-open {
+        /* display: none; */
+        position: absolute;
+        top:80px;
+        left:31vw;
+
+    }
+
+    .tile {
+        width: 55px;
+        height: 55px;
+        font-size: 20px;
+    }
+
+
+
+    .keyboard span {
+        margin: 2.5px;
+    }
+
+    #boards,
+    .board {
+        margin-left: 0;
+    }
+
+    #boards {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+
+    h1 {
+        align-self: center;
+        margin: 0;
+    }
+
+}
+
+@media only screen and (min-width: 830px) {
+    .keyboard {
+        display: none;
+    }
+}
